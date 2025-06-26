@@ -228,6 +228,8 @@
         transition: 0.2s;
     }
 
+    
+
     #SearchB
     {
         bottom: 20px;
@@ -280,6 +282,7 @@
     .image-bidone {
         width: 100%;
         height: auto;
+        transition: transform 0.1s ease;
     }
 
 
@@ -351,3 +354,46 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+
+button.button2
+    {
+        position: fixed;
+        border: none;
+        height: 60px;
+        width: 80px;
+        margin-left: -140px;
+        background-color: #000000;
+        border-radius: 50px;
+        margin-top: 50px;
+        transition: 0.2s;
+        color: white;
+    }
+
+ button.button3
+    {
+        position: fixed;
+        border: none;
+        height: 60px;
+        width: 80px;
+        margin-left: -40px;
+        background-color: #000000;
+        border-radius: 50px;
+        margin-top: 50px;
+        transition: 0.2s;
+        color: white;
+    }
+
+    button.button4
+    {
+        position: fixed;
+        border: none;
+        height: 60px;
+        width: 80px;
+        margin-left: 60px;
+        background-color: #000000;
+        border-radius: 50px;
+        margin-top: 50px;
+        transition: 0.2s;
+        color: white;
+    }
