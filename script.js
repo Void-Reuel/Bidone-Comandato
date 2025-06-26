@@ -104,6 +104,9 @@ window.onload = function() {
 
         }
         position = scroll;
+
+
+        
     };
 
 };
@@ -462,9 +465,6 @@ function Vsearch()
 
 
 
-//collegamento arduino
-
-
 let serialPort, writer;
 
 function openArduinoModal() {
@@ -477,15 +477,25 @@ function closeArduinoModal() {
 
 async function connectArduino() {
   try {
+    if (serialPort && serialPort.readable && serialPort.writable) {
+      console.log("Porta già aperta");
+      document.getElementById("arduinoStatus").textContent = "✓ Arduino già connesso!";
+      return;
+    }
+
     serialPort = await navigator.serial.requestPort();
     await serialPort.open({ baudRate: 9600 });
+
     const encoder = new TextEncoderStream();
     encoder.readable.pipeTo(serialPort.writable);
     writer = encoder.writable.getWriter();
-    document.getElementById("arduinoStatus").textContent = "✅ Arduino connesso!";
+
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    document.getElementById("arduinoStatus").textContent = "✓ Arduino connesso!";
   } catch (err) {
-    console.error(err);
-    document.getElementById("arduinoStatus").textContent = "❌ Connessione fallita";
+    document.getElementById("arduinoStatus").textContent = "✗ Connessione fallita";
+    console.error("Errore nella connessione:", err);
   }
 }
 
@@ -496,4 +506,21 @@ async function sendToArduino() {
   } else {
     alert("Devi prima connettere Arduino.");
   }
-} 
+}
+
+async function disconnectArduino() {
+  try {
+    if (writer) {
+      await writer.close();
+      writer = null;
+    }
+    if (serialPort) {
+      await serialPort.close();
+      serialPort = null;
+    }
+    document.getElementById("arduinoStatus").textContent = "🔌 Disconnesso";
+  } catch (err) {
+    console.error("Errore disconnessione:", err);
+  }
+}
+
