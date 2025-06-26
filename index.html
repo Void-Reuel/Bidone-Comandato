@@ -99,22 +99,23 @@
                     <i class="fa-solid fa-camera fa-2xl" style="color: #dfdfdf;"></i>
                 </button>
 
-                <!-- bottone collegamento -->
-
+               <!-- Bottone di apertura modale -->
                 <button class="button1" id="ArduinoB" onclick="openArduinoModal()">
                     <i class="fa-solid fa-microchip fa-2xl" style="color: #dfdfdf;"></i>
                 </button>
                 
                 <!-- Modale per connessione Arduino -->
                 <div id="arduinoModal" class="modal">
-                  <div class="modal-content">
+                    <div class="modal-content">
                     <span class="close" onclick="closeArduinoModal()">&times;</span>
                     <h2>Controllo Bidone</h2>
-                    <button onclick="connectArduino()" class="button1">🔌 Connetti</button>
-                    <button onclick="sendToArduino()" class="button1">🗑️ Apri Bidone</button>
+                    <button onclick="connectArduino()" class="button2">🔌 Connetti</button>
+                    <button onclick="sendToArduino()" class="button4">🗑️ Apri Bidone</button>
+                    <button onclick="disconnectArduino()" class="button3">❌ Disconnetti</button>
                     <p id="arduinoStatus">Stato: Non connesso</p>
-                  </div>
+                    </div>
                 </div>
+                
 
 
                 
@@ -138,10 +139,10 @@
                                 <div class="content-container shadow"> 
                                     Plastica 
                                     
-                                    <img src="Photos/Plastica.png" class="image-bidone" height="60%">
+                                    <img src="Photos/Plastica.png" id="photos" class="image-bidone" height="60%">
                                 </div>
 
-                                <div class="content-containerE shadow"> 
+                                <div class="content-containerE shadow" id="lista"> 
                                     <ul id="elenco1">
                                         <li>Bottiglie di plastica</li>
                                         <li>Flaconi di detersivi</li>
@@ -181,7 +182,7 @@
                                     <img src="Photos/Vetro.png" height="60%" class="image-bidone">
                                 </div>
 
-                                <div class="content-containerE shadow">
+                                <div class="content-containerE shadow" id="lista">
                                     <ul id="elenco2">
                                         <li>Barattoli di vetro</li>
                                         <li>Bottigliette di vetro</li>
@@ -200,7 +201,7 @@
                                     <img src="Photos/Carta.png" height="60%" class="image-bidone">
                                 </div>
 
-                                <div class="content-containerE shadow"> 
+                                <div class="content-containerE shadow" id="lista"> 
                                     <ul id="elenco3">
                                         <li>Carta (nel secco se sporco)</li>
                                         <li>Cartone della pizza (nel secco se sporco)</li>
@@ -227,7 +228,7 @@
                                     <img src="Photos/Indifferenziato.png" height="60%" class="image-bidone">
                                 </div>
 
-                                <div class="content-containerE shadow"> 
+                                <div class="content-containerE shadow" id="lista"> 
                                     <ul id="elenco4">
                                         <li>Gomma</li>
                                         <li>Stracci</li>
@@ -261,7 +262,7 @@
                                     <img src="Photos/Organico.png" height="60%" class="image-bidone">
                                 </div>
 
-                                <div class="content-containerE shadow">
+                                <div class="content-containerE shadow" id="lista">
                                     <ul id="elenco5">
                                         <li>Avanzi di cibo</li>
                                         <li>Caffè</li>
